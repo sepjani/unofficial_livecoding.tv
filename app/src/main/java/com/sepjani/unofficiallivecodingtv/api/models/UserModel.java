@@ -1,15 +1,13 @@
 package com.sepjani.unofficiallivecodingtv.api.models;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
-
 /**
  * Created by Valeriy Strucovskiy on 4/24/2016.
  */
 
-public class UserDetailModel {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class UserModel {
 
     @SerializedName("url")
     @Expose
@@ -20,9 +18,6 @@ public class UserDetailModel {
     @SerializedName("slug")
     @Expose
     public String slug;
-    @SerializedName("avatar")
-    @Expose
-    public String avatar;
     @SerializedName("country")
     @Expose
     public String country;
@@ -46,7 +41,7 @@ public class UserDetailModel {
     public Integer yearsProgramming;
     @SerializedName("want_learn")
     @Expose
-    public List<String> wantLearn;
+    public String[] wantLearn;
     @SerializedName("registration_date")
     @Expose
     public String registrationDate;

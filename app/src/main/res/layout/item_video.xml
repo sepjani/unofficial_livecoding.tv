@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:weightSum="1"
     android:padding="5dp"
-    android:layout_margin="15dp"
     android:background="@drawable/item_background"
     android:baselineAligned="false">
 

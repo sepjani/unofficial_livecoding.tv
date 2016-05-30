@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.sepjani.unofficiallivecodingtv.api.RestAPIClient;
 import com.sepjani.unofficiallivecodingtv.api.models.LiveVideoModel;
 import com.sepjani.unofficiallivecodingtv.api.models.LiveVideoResult;
-import com.sepjani.unofficiallivecodingtv.fragments.VideosFragment;
+import com.sepjani.unofficiallivecodingtv.fragments.VideosOfflineFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -24,20 +24,25 @@ import retrofit2.Response;
 /**
  * Created by Valeriy Strucovskiy on 4/24/2016.
  */
-public class HomeScreenPresenter {
-
-    private VideosFragment fragment;
+public class VideoOfflineScreenPresenter {
+    private VideosOfflineFragment fragment;
     private ListAdapter adapter;
     private List<LiveVideoModel> objects = new ArrayList<>();
 
-    public HomeScreenPresenter(VideosFragment fragment) {
+    public VideoOfflineScreenPresenter(VideosOfflineFragment fragment) {
         this.fragment = fragment;
         adapter = new ListAdapter(fragment.getContext(), objects);
         fragment.listView.setAdapter(adapter);
+
     }
 
     public void updateValues() {
-        new RestAPIClient().getAPI().getAllLiveVideos().enqueue(new Callback<LiveVideoResult>() {
+
+        new RestAPIClient()
+                .getAPI()
+                .getLastVideos()
+
+                .enqueue(new Callback<LiveVideoResult>() {
             @Override
             public void onResponse(Call<LiveVideoResult> call, Response<LiveVideoResult> response) {
                 objects.clear();

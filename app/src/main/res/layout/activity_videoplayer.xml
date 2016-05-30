@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:EMVideoView="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:gravity="top"
+    android:keepScreenOn="true"
+    android:orientation="vertical">
+
+
+    <com.devbrackets.android.exomedia.ui.widget.EMVideoView
+        android:id="@+id/video_view"
+
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        android:layout_alignParentTop="true"
+        EMVideoView:useDefaultControls="true" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TITLE" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DESCRIPTION" />
+    </LinearLayout>
+</LinearLayout>

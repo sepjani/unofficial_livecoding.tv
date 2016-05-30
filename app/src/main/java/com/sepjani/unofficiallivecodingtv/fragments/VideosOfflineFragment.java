@@ -9,19 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.sepjani.unofficiallivecodingtv.HomeScreenPresenter;
 import com.sepjani.unofficiallivecodingtv.R;
+import com.sepjani.unofficiallivecodingtv.VideoOfflineScreenPresenter;
+import com.trello.rxlifecycle.components.support.RxFragment;
 
 /**
  * Created by Valeriy Strucovskiy on 4/24/2016.
  */
-public class VideosFragment extends Fragment {
+public class VideosOfflineFragment extends RxFragment {
 
     public ListView listView;
     public SwipeRefreshLayout swipeLayout;
 
     public static Fragment newInstance(Context context) {
-        VideosFragment f = new VideosFragment();
+        VideosOfflineFragment f = new VideosOfflineFragment();
         return f;
     }
 
@@ -30,8 +31,7 @@ public class VideosFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_livestreams_list, null);
         swipeLayout = (SwipeRefreshLayout) root.findViewById(R.id.layout_home_swipe);
         listView = (ListView) root.findViewById(R.id.listview_home);
-
-        HomeScreenPresenter presenter = new HomeScreenPresenter(this);
+        VideoOfflineScreenPresenter presenter = new VideoOfflineScreenPresenter(this);
         swipeLayout.setOnRefreshListener(() -> presenter.updateValues());
         presenter.updateValues();
         return root;

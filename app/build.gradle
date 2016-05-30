@@ -15,9 +15,8 @@ buildscript {
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
-
     defaultConfig {
-        applicationId "livecoding.sepjani.com.unofficiallivecodingtv"
+        applicationId 'com.sepjani.unofficiallivecodingtv'
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
@@ -33,14 +32,15 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
-
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
     compile 'io.reactivex:rxjava:1.1.3'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
@@ -48,6 +48,11 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
     compile 'com.cantrowitz:rxbroadcast:1.0.0'
-
+    compile 'com.trello:rxlifecycle:0.5.0'
+    compile 'com.trello:rxlifecycle-components:0.5.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.devbrackets.android:exomedia:3.0.0-preview1'
+    compile 'com.android.support:palette-v7:23.4.0'
 }
