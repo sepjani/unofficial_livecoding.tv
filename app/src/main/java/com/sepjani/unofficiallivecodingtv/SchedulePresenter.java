@@ -91,6 +91,7 @@ public class SchedulePresenter {
                 calendar.setTime(date);
                 String currentTime = calendar.get(Calendar.HOUR_OF_DAY) + ":";
                 int minute = calendar.get(Calendar.MINUTE);
+
                 if (minute < 10) {
                     currentTime += "0";
                     currentTime += minute;
@@ -125,4 +126,8 @@ public class SchedulePresenter {
         return (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:SSZ")).parse(string.replaceAll("Z$", "+0000"));
     }
 
+    public Date parseDate2(String string) throws ParseException {
+        String defaultTimezone = TimeZone.getDefault().getID();
+        return (new SimpleDateFormat("yyyy-MM-dd")).parse(string);
+    }
 }

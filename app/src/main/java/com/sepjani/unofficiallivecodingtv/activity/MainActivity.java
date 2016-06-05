@@ -23,10 +23,10 @@ import com.sepjani.unofficiallivecodingtv.R;
 import com.sepjani.unofficiallivecodingtv.api.RestAPIClient;
 import com.sepjani.unofficiallivecodingtv.api.models.UserDetailModel;
 import com.sepjani.unofficiallivecodingtv.busevents.HelloEvent;
+import com.sepjani.unofficiallivecodingtv.fragments.ChatFragment;
 import com.sepjani.unofficiallivecodingtv.fragments.HomeFragment;
 import com.sepjani.unofficiallivecodingtv.fragments.ScheduleFragment;
 import com.sepjani.unofficiallivecodingtv.fragments.VideosLiveFragment;
-import com.sepjani.unofficiallivecodingtv.fragments.VideosOfflineFragment;
 import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -73,8 +74,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.getMenu().performIdentifierAction(R.id.nav_home, 0);
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        //startActivity(new Intent(MainActivity.this, LoginWebActivity.class));
+
     }
+
 
     @Override
     protected void onResume() {
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(LivecodingApplication.getAppContext());
         long expiresin = prefs.getLong(PreferenceFields.API_EXPIRE, 0);
         long currentMillisec = System.currentTimeMillis();
-        if (expiresin == 0 || expiresin > currentMillisec) {
+        if (expiresin == 0 || expiresin < currentMillisec) {
             startActivity(new Intent(MainActivity.this, LoginWebActivity.class));
         } else {
             new RestAPIClient()
@@ -99,6 +101,7 @@ public class MainActivity extends AppCompatActivity
                                         .into(avatar);
                                 ((TextView) findViewById(R.id.tv_username)).setText(response.body().username);
                                 ((TextView) findViewById(R.id.tv_subtitle)).setText(response.body().wantLearn.toString());
+
                             }
                         }
 
@@ -163,23 +166,26 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                replaceFragment(HomeFragment.class.getName());
+                break;
+            case R.id.nav_livestreams:
+                replaceFragment(VideosLiveFragment.class.getName());
+                break;
 
-        if (id == R.id.nav_home) {
-            replaceFragment(HomeFragment.class.getName());
-        } else if (id == R.id.nav_livestreams) {
-//            startActivity(new Intent(this, VideoPlayerActivity.class));
-            replaceFragment(VideosLiveFragment.class.getName());
-        } else if (id == R.id.nav_videos) {
-            replaceFragment(VideosOfflineFragment.class.getName());
-        }else if (id == R.id.nav_schedule){
-            replaceFragment(ScheduleFragment.class.getName());
-        } else if (id == R.id.nav_settings) {
-            startActivity(new Intent(this, VideoPlayerActivity.class));
-        } else if (id == R.id.nav_view) {
+            case R.id.nav_videos:
+                replaceFragment(VideosLiveFragment.class.getName());
+                break;
 
+            case R.id.nav_schedule:
+                replaceFragment(ScheduleFragment.class.getName());
+                break;
+
+            case R.id.nav_settings:
+                replaceFragment(ChatFragment.class.getName());
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

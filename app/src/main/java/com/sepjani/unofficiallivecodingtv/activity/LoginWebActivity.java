@@ -46,7 +46,7 @@ public class LoginWebActivity extends AppCompatActivity {
                     prefs.edit()
                             .putString(PreferenceFields.API_TOKEN, token.split("=")[1])
                             .putString(PreferenceFields.API_TOKEN_TYPE, type.split("=")[1])
-                            .putLong(PreferenceFields.API_EXPIRE, System.currentTimeMillis() + expiresin)
+                            .putLong(PreferenceFields.API_EXPIRE, System.currentTimeMillis() + expiresin*1000)
                             .commit();
                     LoginWebActivity.this.finish();
                     EventBus.getDefault().post(new HelloEvent("RIGHT!"));

@@ -34,6 +34,7 @@ public class ScheduleFragment extends RxFragment {
         SchedulePresenter presenter = new SchedulePresenter(this);
         swipeLayout.setOnRefreshListener(() -> presenter.updateValues());
         presenter.updateValues();
+
         return root;
     }
 }

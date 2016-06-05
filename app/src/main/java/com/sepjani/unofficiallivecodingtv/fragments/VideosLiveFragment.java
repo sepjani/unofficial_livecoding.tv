@@ -33,7 +33,7 @@ public class VideosLiveFragment extends RxFragment {
         listView = (ListView) root.findViewById(R.id.listview_home);
         VideoLiveScreenPresenter presenter = new VideoLiveScreenPresenter(this);
         swipeLayout.setOnRefreshListener(() -> presenter.updateValues());
-        presenter.updateValues();
+
         return root;
     }
 }

@@ -34,9 +34,12 @@ public class VideoLiveScreenPresenter {
         this.fragment = fragment;
         adapter = new ListAdapter(fragment.getContext(), objects);
         fragment.listView.setAdapter(adapter);
+        AppLoadingIndicator.show(fragment.getContext());
+        updateValues();
     }
 
     public void updateValues() {
+
 
         new RestAPIClient()
                 .getAPI()
@@ -49,11 +52,13 @@ public class VideoLiveScreenPresenter {
                         objects.addAll(response.body().results);
                         adapter.notifyDataSetInvalidated();
                         fragment.swipeLayout.setRefreshing(false);
+                        AppLoadingIndicator.hide();
                     }
 
                     @Override
                     public void onFailure(Call<VideoOnAirSummaryModel> call, Throwable t) {
                         t.printStackTrace();
+                        AppLoadingIndicator.hide();
                     }
                 });
     }
@@ -86,6 +91,7 @@ public class VideoLiveScreenPresenter {
 
             Picasso.with(fragment.getContext())
                     .load(getVideoURL(videoModel.userSlug))
+                    .placeholder(R.drawable.ic_video)
 //                    .fit()
 //                      .resize(0, viewHolder.preview.getWidth())
                     .into(viewHolder.preview);

@@ -1,5 +1,6 @@
 package com.sepjani.unofficiallivecodingtv.api;
 
+import com.sepjani.unofficiallivecodingtv.api.models.ChatCredentialsModel;
 import com.sepjani.unofficiallivecodingtv.api.models.LiveVideoResult;
 import com.sepjani.unofficiallivecodingtv.api.models.LivestreamerDetails;
 import com.sepjani.unofficiallivecodingtv.api.models.SchedulePageModel;
@@ -30,7 +31,12 @@ public interface ILivecodingAPI {
     Call<ViewingKeyModel>
     getViewingKey();
 
-    //scheduledbroadcast***************************************************************
+    //user**********************************************************************
+    @GET("/api/user/chat/account")
+    Call<ChatCredentialsModel>
+    getChatCredentials();
+
+    //scheduledbroadcast********************************************************
 
     /**
      * List the scheduled broadcasts
