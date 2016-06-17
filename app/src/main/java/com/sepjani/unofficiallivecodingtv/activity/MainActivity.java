@@ -15,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.sepjani.unofficiallivecodingtv.LivecodingApplication;
 import com.sepjani.unofficiallivecodingtv.PreferenceFields;
@@ -23,15 +22,17 @@ import com.sepjani.unofficiallivecodingtv.R;
 import com.sepjani.unofficiallivecodingtv.api.RestAPIClient;
 import com.sepjani.unofficiallivecodingtv.api.models.UserDetailModel;
 import com.sepjani.unofficiallivecodingtv.busevents.HelloEvent;
+import com.sepjani.unofficiallivecodingtv.dagger.Car;
 import com.sepjani.unofficiallivecodingtv.fragments.ChatFragment;
 import com.sepjani.unofficiallivecodingtv.fragments.HomeFragment;
 import com.sepjani.unofficiallivecodingtv.fragments.ScheduleFragment;
 import com.sepjani.unofficiallivecodingtv.fragments.VideosLiveFragment;
-import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,6 +41,9 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    Car car;
 
 
     @Override
@@ -50,6 +54,13 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         EventBus.getDefault().register(this);
+
+        ((LivecodingApplication)getApplication()).getComponent().inject(this);
+
+        boolean injected =  car == null ? false : true;
+        System.out.println("injected1 = " + car.makeActionCar());
+        System.out.println("injected2 = " + car.engine.makeAction());
+        System.out.println("injected3 = " + car.wheel.actionRound());
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -67,12 +78,10 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-//
-
-
-        navigationView.getMenu().performIdentifierAction(R.id.nav_home, 0);
+        navigationView.getMenu().performIdentifierAction(R.id.nav_livestreams, 0);
         navigationView.getMenu().getItem(0).setChecked(true);
+
+
 
 
     }
@@ -96,11 +105,11 @@ public class MainActivity extends AppCompatActivity
                             System.out.println(response.body());
                             ImageView avatar = (ImageView) findViewById(R.id.iv_avatar);
                             if (response.body() != null) {
-                                Picasso.with(MainActivity.this)
-                                        .load(response.body().avatar)
-                                        .into(avatar);
-                                ((TextView) findViewById(R.id.tv_username)).setText(response.body().username);
-                                ((TextView) findViewById(R.id.tv_subtitle)).setText(response.body().wantLearn.toString());
+//                                Picasso.with(MainActivity.this)
+//                                        .load(response.body().avatar)
+//                                        .into(avatar);
+//                                ((TextView) findViewById(R.id.tv_username)).setText(response.body().username);
+//                                ((TextView) findViewById(R.id.tv_subtitle)).setText(response.body().wantLearn.toString());
 
                             }
                         }

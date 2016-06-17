@@ -79,7 +79,9 @@ public class VideoLiveScreenPresenter {
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(R.layout.item_video, null, false);
                 viewHolder.name = (TextView) convertView.findViewById(R.id.tv_item_title);
-                viewHolder.home = (TextView) convertView.findViewById(R.id.tv_item_description);
+                viewHolder.viewers = (TextView) convertView.findViewById(R.id.tv_viewer_num);
+                viewHolder.tag = (TextView) convertView.findViewById(R.id.tv_tag);
+                viewHolder.difficulty = (TextView) convertView.findViewById(R.id.tv_difficulty);
                 viewHolder.preview = (ImageView) convertView.findViewById(R.id.iv_video_preview);
                 convertView.setTag(viewHolder);
             } else {
@@ -87,11 +89,15 @@ public class VideoLiveScreenPresenter {
             }
 
             viewHolder.name.setText(videoModel.title);
-            viewHolder.home.setText(videoModel.description);
+            viewHolder.difficulty.setText(videoModel.difficulty);
+            viewHolder.viewers.setText(videoModel.viewersLive + "");
+            viewHolder.tag.setText(videoModel.codingCategory);
 
             Picasso.with(fragment.getContext())
                     .load(getVideoURL(videoModel.userSlug))
                     .placeholder(R.drawable.ic_video)
+
+                    .tag(fragment.getContext()) //
 //                    .fit()
 //                      .resize(0, viewHolder.preview.getWidth())
                     .into(viewHolder.preview);
@@ -103,7 +109,9 @@ public class VideoLiveScreenPresenter {
         // View lookup cache
         private class ViewHolder {
             TextView name;
-            TextView home;
+            TextView viewers;
+            TextView difficulty;
+            TextView tag;
             ImageView preview;
         }
     }

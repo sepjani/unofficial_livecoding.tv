@@ -8,8 +8,8 @@
     <item>
         <bitmap
 
-            android:scaleHeight="85%"
-            android:scaleWidth="85%"
+            android:scaleHeight="125%"
+            android:scaleWidth="125%"
             android:gravity="center"
             android:src="@mipmap/ic_livecoding"/>
 

@@ -23,7 +23,7 @@ public class HomeFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_home, null);
         WebView webView = (WebView) root.findViewById(R.id.webView);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl(URL);
+//        webView.loadUrl(URL);
         return root;
     }
 }

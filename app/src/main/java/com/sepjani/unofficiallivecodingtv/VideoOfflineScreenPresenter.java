@@ -12,7 +12,6 @@ import com.sepjani.unofficiallivecodingtv.api.RestAPIClient;
 import com.sepjani.unofficiallivecodingtv.api.models.LiveVideoModel;
 import com.sepjani.unofficiallivecodingtv.api.models.LiveVideoResult;
 import com.sepjani.unofficiallivecodingtv.fragments.VideosOfflineFragment;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +73,6 @@ public class VideoOfflineScreenPresenter {
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(R.layout.item_video, null, false);
                 viewHolder.name = (TextView) convertView.findViewById(R.id.tv_item_title);
-                viewHolder.home = (TextView) convertView.findViewById(R.id.tv_item_description);
                 viewHolder.preview = (ImageView) convertView.findViewById(R.id.iv_video_preview);
                 convertView.setTag(viewHolder);
             } else {
@@ -84,11 +82,11 @@ public class VideoOfflineScreenPresenter {
             viewHolder.name.setText(videoModel.title);
             viewHolder.home.setText(videoModel.description);
 
-            Picasso.with(fragment.getContext())
-                    .load(getVideoURL(videoModel.userSlug))
-//                    .fit()
-//                      .resize(0, viewHolder.preview.getWidth())
-                    .into(viewHolder.preview);
+//            Picasso.with(fragment.getContext())
+//                    .load(getVideoURL(videoModel.userSlug))
+////                    .fit()
+////                      .resize(0, viewHolder.preview.getWidth())
+//                    .into(viewHolder.preview);
 
 
             return convertView;

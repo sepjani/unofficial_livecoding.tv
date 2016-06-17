@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.sepjani.unofficiallivecodingtv.ChatPresenter;
+import com.sepjani.unofficiallivecodingtv.chat.ChatPresenter;
 import com.sepjani.unofficiallivecodingtv.R;
 import com.sepjani.unofficiallivecodingtv.chat.ChatAdapter;
 

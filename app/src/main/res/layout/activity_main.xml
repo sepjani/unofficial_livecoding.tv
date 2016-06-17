@@ -11,15 +11,66 @@
     <include
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
+
+    <LinearLayout
+        android:id="@+id/nav_view2"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        android:background="@android:color/black"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_weight="0.8"
+            android:background="@color/colorPrimaryLightTransp"
+            android:clipToPadding="false"
+            android:elevation="0dp"
+            android:fitsSystemWindows="true"
+            app:elevation="0dp"
+            app:headerLayout="@layout/nav_header_main_unlogin"
+            app:itemBackground="@drawable/background_item_navigation"
+            app:itemTextColor="@android:color/white"
+            app:menu="@menu/activity_main_drawer_unlogin"></android.support.design.widget.NavigationView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            android:weightSum="1.001">
+
+            <Button
+                style="@style/ButtonBlue"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1dp"
+                android:layout_weight="0.5"
+                android:text="Sign Up" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="60dp"
+                android:background="@android:color/white" />
+
+            <Button
+                style="@style/ButtonBlue"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:text="Log In"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>

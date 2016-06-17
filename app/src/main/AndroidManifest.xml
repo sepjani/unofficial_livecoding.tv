@@ -31,10 +31,6 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".chat.MyService"
-            android:enabled="true" />
-
     </application>
 
 </manifest>

@@ -1,9 +1,11 @@
-package com.sepjani.unofficiallivecodingtv;
+package com.sepjani.unofficiallivecodingtv.chat;
 
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.sepjani.unofficiallivecodingtv.AppLoadingIndicator;
+import com.sepjani.unofficiallivecodingtv.LivecodingApplication;
 import com.sepjani.unofficiallivecodingtv.api.RestAPIClient;
 import com.sepjani.unofficiallivecodingtv.api.models.ChatCredentialsModel;
 import com.sepjani.unofficiallivecodingtv.fragments.ChatFragment;

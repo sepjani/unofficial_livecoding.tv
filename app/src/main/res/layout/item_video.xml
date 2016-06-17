@@ -1,66 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
     android:background="@drawable/item_background">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/iv_video_preview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:adjustViewBounds="true"
+        android:background="@drawable/design_snackbar_background"
+        android:src="@drawable/ic_video" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal|bottom"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="false"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_weight="0.24"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:layout_alignParentBottom="true"
+        android:id="@+id/relativeLayout">
 
-        <TextView
-            android:id="@+id/tv_item_description"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="3"
-            android:text="description"
-            android:textColor="@android:color/white" />
-    </LinearLayout>
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal|top"
-        android:orientation="vertical"
-        android:gravity="center">
+            android:divider="@drawable/devider_chips"
+            android:showDividers="middle"
 
-        <ImageView
-            android:id="@+id/iv_video_preview"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_video" />
-    </LinearLayout>
+            android:id="@+id/linearLayout3"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@+id/imageView2"
+            android:layout_toStartOf="@+id/imageView2">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#945d5d5d"
-        android:padding="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Expert"
+                android:id="@+id/tv_difficulty"
+                android:background="@drawable/background_chips_video"
+                android:layout_above="@+id/linearLayout3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textColor="@color/blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="untagged"
+                android:id="@+id/tv_tag"
+                android:background="@drawable/background_chips_video"
+                android:layout_above="@+id/linearLayout3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textColor="@color/blue"
+                android:singleLine="true" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_item_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="false"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center_horizontal|top"
-            android:gravity="center"
-            android:text="title"
-            android:textStyle="bold"
-            android:textColor="@android:color/white" />
-    </LinearLayout>
+            android:text="Title"
+            android:id="@+id/tv_item_title"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_above="@+id/linearLayout3"
+            android:layout_alignLeft="@+id/linearLayout3"
+            android:layout_alignStart="@+id/linearLayout3"
+            android:singleLine="true"
+            android:layout_marginBottom="6dp" />
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/tv_viewer_num"
+            android:layout_alignBottom="@+id/linearLayout3"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="17dp"
+            android:id="@+id/imageView2"
+            android:src="@drawable/ic_group_human"
+            android:layout_alignBottom="@+id/linearLayout3"
+            android:layout_toLeftOf="@+id/tv_viewer_num"
+            android:layout_toStartOf="@+id/tv_viewer_num"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="2dp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LIVE"
+        android:id="@+id/textView4"
+        android:layout_gravity="right"
+        android:textColor="@android:color/white"
+        android:background="#ed4e5b"
+        android:layout_marginTop="10dp"
+        android:layout_alignTop="@+id/iv_video_preview"
+        android:layout_alignRight="@+id/iv_video_preview"
+        android:layout_alignEnd="@+id/iv_video_preview"
+        android:layout_marginRight="10dp"
+        android:padding="6dp"
+        android:visibility="gone" />
+
+</LinearLayout>

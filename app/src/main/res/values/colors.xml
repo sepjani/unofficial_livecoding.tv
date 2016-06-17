@@ -2,6 +2,10 @@
 <resources>
     <color name="colorPrimary">#181c20</color>
     <color name="colorPrimaryLight">#525f6c</color>
+    <color name="colorPrimaryLightTransp">#fd525f6c</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="blue">#6999bf</color>
+    <color name="blue_light">#7fb6e2</color>
+    <color name="blue_dark">#607d8b</color>
 </resources>
