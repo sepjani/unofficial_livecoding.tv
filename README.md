@@ -1,3 +1,3 @@
 # unofficiallivecodint.tv
 contest app
-https://www.dropbox.com/s/op4xqinppasrsws/device-2016-06-18-021210.png?dl=0
+https://dl.dropboxusercontent.com/u/54455753/device-2016-06-18-021210.png
